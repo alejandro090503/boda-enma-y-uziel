@@ -1174,26 +1174,26 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 #lightbox-close:hover{background:rgba(26,46,74,.8);border-color:var(--gold-soft);transform:scale(1.08)}
 
 /* ============ MUSIC PLAYER (vinilo) ============ */
-#music-btn{
-  position:fixed;bottom:20px;right:20px;z-index:9999;
+.vinyl-btn{
+  position:fixed;bottom:20px;right:20px;z-index:50;
   width:72px;height:72px;border-radius:50%;padding:0;
   border:none;cursor:pointer;background:transparent;
   opacity:0;transform:scale(.6);pointer-events:none;
-  transition:opacity .5s ease,transform .35s cubic-bezier(.2,.7,.2,1);
-  box-shadow:0 4px 18px rgba(0,0,0,.45),0 0 0 1px rgba(201,164,100,.18);
+  transition:transform .35s cubic-bezier(.2,.7,.2,1);
+  box-shadow:0 4px 18px rgba(0,0,0,.45),0 0 0 1px rgba(201,166,100,.16);
 }
-#music-btn.visible{opacity:1;transform:scale(1);pointer-events:auto}
-#music-btn.visible:hover{transform:scale(1.1)}
+.vinyl-btn.is-ready{opacity:1;transform:scale(1);pointer-events:auto}
+.vinyl-btn:hover{transform:scale(1.1)}
 .vinyl-spin{
   width:100%;height:100%;border-radius:50%;position:relative;
   transition:none;
 }
-#music-btn.is-playing .vinyl-spin{animation:vinylSpin 1.8s linear infinite}
+.vinyl-btn.is-playing .vinyl-spin{animation:vinylSpin 1.8s linear infinite}
 @keyframes vinylSpin{to{transform:rotate(360deg)}}
 .vinyl-disc{width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative;
   background:
-    radial-gradient(circle,#1d2620 4%,transparent 4.5%),
-    radial-gradient(circle,#D4C89E 0%,#B8A87A 17%,#7A6840 19%,transparent 19.5%),
+    radial-gradient(circle,#0A0F26 4%,transparent 4.5%),
+    radial-gradient(circle,#E8CC95 0%,#C9A664 17%,#7A5E26 19%,transparent 19.5%),
     repeating-radial-gradient(circle,
       transparent 20%,rgba(255,255,255,.055) 20.8%,transparent 21.5%,
       transparent 24%,rgba(255,255,255,.04) 24.8%,transparent 25.5%,
@@ -1216,7 +1216,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       transparent 92%,rgba(255,255,255,.055) 92.8%,transparent 93.5%,
       transparent 96%,rgba(255,255,255,.04) 96.8%,transparent 97.5%
     ),
-    radial-gradient(circle,#1d2620 0%,#222d27 60%,#1d2620 100%);
+    radial-gradient(circle,#0A0F26 0%,#14233B 60%,#0A0F26 100%);
   box-shadow:inset 0 0 8px rgba(0,0,0,.4);
 }
 .vinyl-sheen{
@@ -1226,16 +1226,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 }
 .vinyl-label-text{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-family:var(--script);font-size:11px;color:#1d2620;
-  text-align:center;line-height:1.1;opacity:.75;
+  font-family:var(--script);font-size:11px;color:#F5EFE3;
+  text-align:center;line-height:1.1;opacity:.85;
   pointer-events:none;width:26px;
 }
-.vinyl-label-text small{font-family:var(--sans);font-size:5px;letter-spacing:.15em;display:block;margin-top:1px;opacity:.65}
+.vinyl-label-text small{font-family:var(--sans);font-size:5px;letter-spacing:.15em;display:block;margin-top:1px;opacity:.7}
 .vinyl-hole{
   position:absolute;top:50%;left:50%;width:6px;height:6px;
   transform:translate(-50%,-50%);border-radius:50%;
-  background:#1d2620;
-  box-shadow:0 0 0 1.5px rgba(201,164,100,.4);
+  background:#0A0F26;
+  box-shadow:0 0 0 1.5px rgba(201,166,100,.45);
 }
 .vinyl-icons{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
@@ -1243,33 +1243,33 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 }
 .vinyl-icons svg{width:100%;height:100%;display:block}
 .vinyl-icon-pause{display:none}
-#music-btn.is-playing .vinyl-icon-play{display:none}
-#music-btn.is-playing .vinyl-icon-pause{display:block}
-#music-btn::after{
+.vinyl-btn.is-playing .vinyl-icon-play{display:none}
+.vinyl-btn.is-playing .vinyl-icon-pause{display:block}
+.vinyl-btn::after{
   content:"";position:absolute;inset:-5px;border-radius:50%;
   border:1px solid var(--gold);opacity:.3;
   animation:vinylPulse 3s ease-in-out infinite;
 }
-#music-btn.is-playing::after{animation-duration:1.6s}
+.vinyl-btn.is-playing::after{animation-duration:1.6s}
 @keyframes vinylPulse{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.12);opacity:.05}}
 .vinyl-tonearm{
   position:absolute;top:-4px;right:-2px;width:24px;height:34px;
   transform-origin:top right;transform:rotate(-28deg);
   transition:transform .6s cubic-bezier(.2,.7,.2,1);pointer-events:none;z-index:1;
 }
-#music-btn.is-playing .vinyl-tonearm{transform:rotate(-12deg)}
+.vinyl-btn.is-playing .vinyl-tonearm{transform:rotate(-12deg)}
 .vinyl-tonearm-line{
   position:absolute;top:2px;right:4px;width:2px;height:28px;
-  background:linear-gradient(to bottom,#7A6840,#B8A87A 40%,#7A6840);
+  background:linear-gradient(to bottom,#7A5E26,#C9A664 40%,#7A5E26);
   border-radius:1px;transform:rotate(-5deg);transform-origin:top center;
 }
 .vinyl-tonearm-head{
   position:absolute;bottom:0;right:2px;width:5px;height:6px;
-  background:#B8A87A;border-radius:0 0 2px 2px;
+  background:#C9A664;border-radius:0 0 2px 2px;
 }
 .vinyl-tonearm-pivot{
   position:absolute;top:0;right:2px;width:7px;height:7px;
-  background:radial-gradient(circle,#D4C89E,#7A6840);border-radius:50%;
+  background:radial-gradient(circle,#E8CC95,#7A5E26);border-radius:50%;
   box-shadow:0 1px 3px rgba(0,0,0,.3);
 }
 </style>
@@ -1287,6 +1287,29 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div id="env-hint">Toca para abrir</div>
 </div>
 <div id="env-flash" aria-hidden="true"></div>
+
+<!-- MUSIC -->
+<audio id="music" preload="metadata" loop>
+  <source src="cancion.mp3" type="audio/mpeg">
+</audio>
+<button class="vinyl-btn" id="music-btn" type="button" aria-label="Reproducir música de la invitación">
+  <div class="vinyl-tonearm">
+    <div class="vinyl-tonearm-pivot"></div>
+    <div class="vinyl-tonearm-line"></div>
+    <div class="vinyl-tonearm-head"></div>
+  </div>
+  <div class="vinyl-spin">
+    <div class="vinyl-disc">
+      <div class="vinyl-sheen"></div>
+      <div class="vinyl-label-text">U&amp;E<small>2026</small></div>
+      <div class="vinyl-hole"></div>
+    </div>
+  </div>
+  <div class="vinyl-icons">
+    <svg class="vinyl-icon-play" viewBox="0 0 24 24" fill="#0A0F26" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="vinyl-icon-pause" viewBox="0 0 24 24" fill="#0A0F26" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </div>
+</button>
 
 <!-- LOADER -->
 <div id="loader">
@@ -2414,6 +2437,54 @@ function startParticles(){
 })();
 
 window.addEventListener('resize',()=>ScrollTrigger.refresh());
+
+// ------ MÚSICA (vinilo flotante) — autoplay con fallback al primer gesto ------
+const MUSIC_START_OFFSET = 0;
+const musicEl  = document.getElementById('music');
+const musicBtn = document.getElementById('music-btn');
+
+function setMusicStart(){
+  if(!musicEl) return;
+  try { if(MUSIC_START_OFFSET) musicEl.currentTime = MUSIC_START_OFFSET; } catch(e){}
+}
+if(musicEl){
+  musicEl.addEventListener('play',  ()=> musicBtn && musicBtn.classList.add('is-playing'));
+  musicEl.addEventListener('pause', ()=> musicBtn && musicBtn.classList.remove('is-playing'));
+}
+function showMusicBtn(){
+  if(musicBtn) musicBtn.classList.add('is-ready');
+}
+function startMusic(){
+  showMusicBtn();
+  if(!musicEl) return;
+  setMusicStart();
+  const p = musicEl.play();
+  if(p && typeof p.catch === 'function') p.catch(()=>{});
+}
+if(musicBtn){
+  musicBtn.addEventListener('click', ()=>{
+    if(!musicEl) return;
+    if(musicEl.paused){ musicEl.play().catch(()=>{}); }
+    else { musicEl.pause(); }
+  });
+}
+function tryAutoMusic(){
+  if(!musicEl) return;
+  showMusicBtn();
+  var p = musicEl.play();
+  if(p && typeof p.catch === 'function'){
+    p.catch(function(){
+      function onFirstInteraction(){
+        startMusic();
+        document.removeEventListener('click', onFirstInteraction);
+        document.removeEventListener('touchstart', onFirstInteraction);
+      }
+      document.addEventListener('click', onFirstInteraction);
+      document.addEventListener('touchstart', onFirstInteraction, {passive:true});
+    });
+  }
+}
+tryAutoMusic();
 </script>
 </body>
 </html>
