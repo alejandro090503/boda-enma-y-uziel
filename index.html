@@ -444,7 +444,88 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .fam-names{font-family:var(--display);font-size:17px;line-height:1.65;color:var(--accent-deep);font-weight:400}
 .amp-gold{color:var(--gold);font-family:var(--display);font-style:italic;font-size:1.35em;font-weight:400;display:block;margin:6px 0}
 
-/* Bloque editorial del versículo */
+/* ============ SECCIÓN "NOS CASAMOS" ============ */
+#nos-casamos{
+  position:relative;overflow:hidden;
+  min-height:min(90vh,640px);
+  display:flex;align-items:center;
+}
+.nc-bg{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 30%;
+  filter:brightness(.68) saturate(.9);
+}
+#nos-casamos::before{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to right, rgba(10,15,36,.70) 0%, rgba(10,15,36,.40) 55%, rgba(10,15,36,.10) 100%),
+    linear-gradient(to bottom, rgba(10,15,36,.30) 0%, transparent 25%, transparent 75%, rgba(10,15,36,.55) 100%);
+}
+.nc-content{
+  position:relative;z-index:2;
+  padding:clamp(56px,10vh,96px) clamp(28px,6vw,80px);
+  max-width:620px;
+}
+.nc-eyebrow{
+  font-family:var(--sans);font-weight:600;
+  font-size:11px;letter-spacing:.55em;text-transform:uppercase;
+  color:var(--gold-soft);padding-left:.55em;margin-bottom:22px;
+  opacity:.92;
+}
+.nc-headline{
+  font-family:var(--script);
+  font-size:clamp(58px,10vw,96px);
+  color:#F8F5EC;line-height:.95;
+  text-shadow:0 4px 24px rgba(0,0,0,.45);
+  margin-bottom:6px;
+}
+.nc-names{
+  font-family:var(--display);font-weight:400;font-style:italic;
+  font-size:clamp(32px,5.5vw,54px);
+  color:#F8F5EC;line-height:1.1;
+  letter-spacing:-.01em;
+  text-shadow:0 2px 16px rgba(0,0,0,.4);
+  margin-bottom:32px;
+}
+.nc-names .amp{
+  font-family:var(--script);font-style:normal;
+  color:var(--gold-soft);font-size:1.15em;
+  display:inline-block;margin:0 .15em;
+}
+.nc-rule{
+  width:52px;height:1.5px;margin-bottom:28px;
+  background:linear-gradient(to right, var(--gold), var(--gold-soft));
+  opacity:.75;
+}
+.nc-invite{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(17px,2vw,21px);
+  color:rgba(248,245,236,.88);
+  line-height:1.75;max-width:480px;
+  letter-spacing:.01em;margin-bottom:20px;
+}
+.nc-couple-line{
+  font-family:var(--italiana);font-weight:400;
+  font-size:clamp(22px,3vw,30px);
+  color:var(--gold-soft);letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.nc-date{
+  margin-top:28px;
+  font-family:var(--sans);font-weight:600;
+  font-size:12px;letter-spacing:.6em;text-transform:uppercase;
+  color:rgba(248,245,236,.7);padding-left:.6em;
+  display:flex;align-items:center;gap:16px;
+}
+.nc-date::before{
+  content:'';width:32px;height:1px;
+  background:var(--gold-soft);opacity:.55;flex-shrink:0;
+}
+@media(max-width:600px){
+  .nc-content{padding:48px 24px 56px;}
+}
+
+/* Bloque editorial de invitación (sin versículo) */
 .fam-intro{
   max-width:640px;margin:0 auto 72px;
   text-align:center;padding:0 clamp(16px,5vw,40px);
@@ -523,7 +604,25 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .loc-type{font-family:var(--sans);font-size:10px;letter-spacing:.55em;text-transform:uppercase;color:var(--gold-deep);padding-left:.55em;margin-bottom:28px;font-weight:500}
 .loc-name{font-family:var(--display);font-size:26px;color:var(--accent-deep);margin-bottom:20px;line-height:1.25;font-weight:400}
 .loc-time{font-family:var(--display);font-style:italic;font-size:22px;color:var(--gold);margin-bottom:24px;font-variant-numeric:tabular-nums}
-.loc-addr{font-family:var(--serif);font-size:15px;color:var(--ink-soft);line-height:1.7;margin-bottom:32px;font-weight:400}
+.loc-addr{font-family:var(--serif);font-size:17px;color:var(--ink);line-height:1.75;margin-bottom:32px;font-weight:500}
+.loc-addr b{font-weight:700;color:var(--accent-deep);letter-spacing:.01em}
+/* Fondo fotográfico sutil en el card de City Cruises */
+.loc-card--yate{
+  position:relative;overflow:hidden;background:var(--paper);
+}
+.loc-card--yate::after{content:none}
+.loc-card--yate .loc-card-bg{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 40%;
+  filter:saturate(.7) brightness(.55) blur(2px);
+  z-index:0;transform:scale(1.06);
+}
+.loc-card--yate .loc-card-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(135deg, rgba(245,239,227,.92) 0%, rgba(245,239,227,.78) 55%, rgba(245,239,227,.70) 100%);
+}
+.loc-card--yate > *:not(.loc-card-bg):not(.loc-card-overlay){position:relative;z-index:2}
 .loc-btn{
   display:inline-block;padding:15px 34px;
   border:1px solid var(--accent-deep);background:transparent;
@@ -1398,15 +1497,31 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     </div>
   </section>
 
-  <!-- DIVIDER: date-hero dark → paper -->
-  <div class="seam" style="--from:#26406A;--to:var(--paper)" aria-hidden="true"></div>
+  <!-- DIVIDER: date-hero dark → bg -->
+  <div class="seam" style="--from:#26406A;--to:var(--bg)" aria-hidden="true"></div>
+
+  <!-- NOS CASAMOS (sección fotográfica, de boda-griselda-jorge) -->
+  <section id="nos-casamos">
+    <img class="nc-bg" src="foto3.jpg" alt="" loading="lazy">
+    <div class="nc-content">
+      <p class="nc-eyebrow">28 · 06 · 2026 · Marina del Rey</p>
+      <p class="nc-headline">¡Nos<br>casamos!</p>
+      <div class="nc-rule" aria-hidden="true"></div>
+      <p class="nc-invite">Con la bendición de Dios y el amor de nuestras familias, queremos compartir contigo el inicio de nuestra historia juntos.</p>
+      <p class="nc-couple-line">Enma &amp; Uziel</p>
+      <p class="nc-date">Domingo · 28 de junio de 2026</p>
+    </div>
+  </section>
+
+  <!-- DIVIDER: bg → paper -->
+  <div class="seam" style="--from:var(--bg);--to:var(--paper)" aria-hidden="true"></div>
 
   <!-- PADRES Y PADRINOS -->
   <section class="section-paper family">
     <span class="mono-wm" aria-hidden="true">U &amp; E</span>
     <div class="container">
 
-      <!-- Bloque editorial: versículo + invitación + nombres (tipografía depurada) -->
+      <!-- Bloque editorial de invitación -->
       <div class="fam-intro">
         <svg class="fam-intro-orn" viewBox="0 0 220 14" fill="none" aria-hidden="true">
           <g stroke="var(--gold)" stroke-width=".9" opacity=".7" fill="none">
@@ -1416,8 +1531,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             <circle cx="110" cy="7" r="1" fill="var(--gold)" stroke="none"/>
           </g>
         </svg>
-        <p class="fam-verse">&ldquo;Las muchas aguas no podrán apagar el amor,<br>ni lo ahogarán los ríos.&rdquo;</p>
-        <p class="fam-verse-cite">Cantares · 8 : 7</p>
         <div class="fam-intro-rule" aria-hidden="true"></div>
         <p class="fam-invite">Nos complace invitarles a nuestro enlace matrimonial</p>
         <p class="fam-couple">Enma <span class="fam-couple-amp">&amp;</span> Uziel</p>
@@ -1462,7 +1575,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
       <!-- BLOQUE 1 · CEREMONIA RELIGIOSA -->
       <div class="cer-block">
-        <article class="loc-card loc-card--solo" data-tilt>
+        <article class="loc-card loc-card--solo loc-card--yate" data-tilt>
+          <img class="loc-card-bg" src="yate.jpg" alt="" aria-hidden="true">
+          <div class="loc-card-overlay" aria-hidden="true"></div>
           <span class="washi washi--l"></span>
           <svg class="rosette rosette--tl" viewBox="0 0 44 44" fill="none" aria-hidden="true">
             <g stroke="var(--gold)" stroke-width=".8" fill="none">
@@ -1524,7 +1639,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             <div class="itin-card">
               <div class="itin-time">4:45 pm</div>
               <div class="itin-name">Bebidas</div>
-              <div class="itin-desc">Un brindis de bienvenida a bordo.</div>
+              <div class="itin-desc">Bienvenida a bordo.</div>
             </div>
           </li>
           <li class="itin-event">
@@ -1704,28 +1819,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     </div>
   </section>
 
-  <!-- DIVIDER: surface → paper -->
-  <div class="seam" style="--from:var(--surface);--to:var(--paper)" aria-hidden="true"></div>
-
-  <!-- KIDS POLICY -->
-  <section class="section-paper kids-policy">
-    <div class="container kids-inner">
-      <div class="eyebrow">Una nota cariñosa</div>
-      <h2>Una celebración <em>de</em> adultos</h2>
-      <div class="kids-icon">
-        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round">
-          <circle cx="36" cy="36" r="28" style="--len:176"/>
-          <path d="M36 16 Q24 28 24 40 Q24 52 36 56 Q48 52 48 40 Q48 28 36 16 Z" style="--len:180" fill="var(--gold-soft)" fill-opacity=".18"/>
-          <path d="M36 26 L36 42" style="--len:16"/>
-          <circle cx="36" cy="46" r="2" style="--len:14" fill="var(--gold)"/>
-        </svg>
-      </div>
-      <p class="kids-text">Agradecemos su comprensión al considerar este evento exclusivamente para adultos.</p>
-    </div>
-  </section>
-
-  <!-- DIVIDER: paper → bg -->
-  <div class="seam" style="--from:var(--paper);--to:var(--bg)" aria-hidden="true"></div>
+  <!-- DIVIDER: surface → bg -->
+  <div class="seam" style="--from:var(--surface);--to:var(--bg)" aria-hidden="true"></div>
 
   <!-- ALBUM QR -->
   <section class="section-bg album">
@@ -1899,6 +1994,8 @@ function launchInvitation(){
 
   startParticles();
   if(window.ScrollTrigger) ScrollTrigger.refresh();
+  // Música automática al revelar la invitación (sin necesidad de pulsar play)
+  if(typeof startMusic === 'function') startMusic();
 }
 
 // ------ ENVELOPE OPENING SEQUENCE ------
@@ -2079,6 +2176,14 @@ tick();setInterval(tick,1000);
   });
 })();
 
+// ------ NOS CASAMOS ------
+gsap.fromTo('.nc-eyebrow',{opacity:0,y:16},{opacity:1,y:0,duration:.9,scrollTrigger:{trigger:'#nos-casamos',start:'top 75%'}});
+gsap.fromTo('.nc-headline',{opacity:0,y:36,skewX:'-4deg'},{opacity:1,y:0,skewX:'0deg',duration:1.2,ease:'power3.out',scrollTrigger:{trigger:'#nos-casamos',start:'top 70%'}});
+gsap.fromTo('.nc-rule',{scaleX:0,transformOrigin:'left'},{scaleX:1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'#nos-casamos',start:'top 68%'}});
+gsap.fromTo('.nc-invite,.nc-couple-line,.nc-date',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.14,ease:'power3.out',scrollTrigger:{trigger:'#nos-casamos',start:'top 65%'}});
+gsap.fromTo('.fam-intro > *',{opacity:0,y:16},{opacity:1,y:0,duration:.9,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.fam-intro',start:'top 82%'}});
+gsap.fromTo('.fam-card',{opacity:0,y:28},{opacity:1,y:0,duration:.95,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.family-grid',start:'top 82%'}});
+
 // ------ DRESS ------
 gsap.fromTo('.dress .eyebrow, .dress h2, .dress-sub',{opacity:0,y:14},{opacity:1,y:0,duration:.9,stagger:.08,scrollTrigger:{trigger:'.dress',start:'top 78%'}});
 gsap.fromTo('.dc-col',{opacity:0,y:24},{opacity:1,y:0,duration:.95,stagger:.18,ease:'power3.out',scrollTrigger:{trigger:'.dc-cols',start:'top 82%'}});
@@ -2155,11 +2260,6 @@ gsap.fromTo('.gal-hint',{opacity:0},{opacity:.9,duration:1,scrollTrigger:{trigge
   });
 })();
 
-// ------ KIDS draw-on ------
-const kidsPaths = document.querySelectorAll('.kids-icon svg path, .kids-icon svg circle');
-gsap.set(kidsPaths,{strokeDashoffset:(i,el)=>getComputedStyle(el).getPropertyValue('--len')||200});
-gsap.to(kidsPaths,{strokeDashoffset:0,duration:2,stagger:.25,ease:'power2.inOut',scrollTrigger:{trigger:'.kids-icon',start:'top 82%'}});
-gsap.fromTo('.kids-policy .eyebrow, .kids-policy h2, .kids-text',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.12,scrollTrigger:{trigger:'.kids-policy',start:'top 78%'}});
 
 // ------ GIFTS ------
 gsap.fromTo('.gifts-head > *',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.1,scrollTrigger:{trigger:'.gifts-head',start:'top 80%'}});
@@ -2468,23 +2568,8 @@ if(musicBtn){
     else { musicEl.pause(); }
   });
 }
-function tryAutoMusic(){
-  if(!musicEl) return;
-  showMusicBtn();
-  var p = musicEl.play();
-  if(p && typeof p.catch === 'function'){
-    p.catch(function(){
-      function onFirstInteraction(){
-        startMusic();
-        document.removeEventListener('click', onFirstInteraction);
-        document.removeEventListener('touchstart', onFirstInteraction);
-      }
-      document.addEventListener('click', onFirstInteraction);
-      document.addEventListener('touchstart', onFirstInteraction, {passive:true});
-    });
-  }
-}
-tryAutoMusic();
+// Música arranca automáticamente en launchInvitation() (al abrir el sobre)
+// El botón de play/pausa sigue disponible en cualquier momento
 </script>
 </body>
 </html>
