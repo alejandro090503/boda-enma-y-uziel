@@ -444,85 +444,65 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .fam-names{font-family:var(--display);font-size:17px;line-height:1.65;color:var(--accent-deep);font-weight:400}
 .amp-gold{color:var(--gold);font-family:var(--display);font-style:italic;font-size:1.35em;font-weight:400;display:block;margin:6px 0}
 
-/* ============ SECCIÓN "NOS CASAMOS" ============ */
+/* ============ SECCIÓN UNIFICADA "NOS CASAMOS + INVITACIÓN" ============ */
 #nos-casamos{
-  position:relative;overflow:hidden;
-  min-height:min(90vh,640px);
-  display:flex;align-items:center;
+  background:var(--accent-deep);
+  padding:min(16vh,130px) clamp(28px,8vw,100px) min(18vh,150px);
+  text-align:center;
+  position:relative;overflow:hidden;isolation:isolate;
 }
-.nc-bg{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center 30%;
-  filter:brightness(.68) saturate(.9);
-}
+/* Resplandor dorado sutil superior e inferior */
 #nos-casamos::before{
-  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
-    linear-gradient(to right, rgba(10,15,36,.70) 0%, rgba(10,15,36,.40) 55%, rgba(10,15,36,.10) 100%),
-    linear-gradient(to bottom, rgba(10,15,36,.30) 0%, transparent 25%, transparent 75%, rgba(10,15,36,.55) 100%);
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(201,166,100,.10) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 40% at 50% 110%, rgba(201,166,100,.07) 0%, transparent 55%);
 }
-.nc-content{
+/* Marco hairline dorado interior */
+#nos-casamos::after{
+  content:'';position:absolute;
+  inset:clamp(20px,4vw,44px);
+  border:1px solid rgba(201,166,100,.18);
+  pointer-events:none;z-index:1;
+}
+.nc-inner{
   position:relative;z-index:2;
-  padding:clamp(56px,10vh,96px) clamp(28px,6vw,80px);
-  max-width:620px;
-}
-.nc-eyebrow{
-  font-family:var(--sans);font-weight:600;
-  font-size:11px;letter-spacing:.55em;text-transform:uppercase;
-  color:var(--gold-soft);padding-left:.55em;margin-bottom:22px;
-  opacity:.92;
+  max-width:660px;margin:0 auto;
 }
 .nc-headline{
   font-family:var(--script);
-  font-size:clamp(58px,10vw,96px);
-  color:#F8F5EC;line-height:.95;
-  text-shadow:0 4px 24px rgba(0,0,0,.45);
-  margin-bottom:6px;
-}
-.nc-names{
-  font-family:var(--display);font-weight:400;font-style:italic;
-  font-size:clamp(32px,5.5vw,54px);
-  color:#F8F5EC;line-height:1.1;
+  font-size:clamp(80px,16vw,148px);
+  color:#F8F5EC;line-height:.88;
+  text-shadow:0 6px 40px rgba(0,0,0,.40);
+  display:block;margin-bottom:36px;
   letter-spacing:-.01em;
-  text-shadow:0 2px 16px rgba(0,0,0,.4);
-  margin-bottom:32px;
 }
-.nc-names .amp{
-  font-family:var(--script);font-style:normal;
-  color:var(--gold-soft);font-size:1.15em;
-  display:inline-block;margin:0 .15em;
+.nc-diamond{
+  display:block;margin:0 auto 36px;
+  color:var(--gold-soft);opacity:.75;
+  width:clamp(160px,30vw,240px);height:auto;
 }
-.nc-rule{
-  width:52px;height:1.5px;margin-bottom:28px;
-  background:linear-gradient(to right, var(--gold), var(--gold-soft));
-  opacity:.75;
-}
-.nc-invite{
+.nc-invite-body{
   font-family:var(--serif);font-style:italic;font-weight:400;
   font-size:clamp(17px,2vw,21px);
-  color:rgba(248,245,236,.88);
-  line-height:1.75;max-width:480px;
-  letter-spacing:.01em;margin-bottom:20px;
+  color:rgba(248,245,236,.85);
+  line-height:1.85;max-width:520px;margin:0 auto 44px;
+  letter-spacing:.01em;
 }
-.nc-couple-line{
-  font-family:var(--italiana);font-weight:400;
-  font-size:clamp(22px,3vw,30px);
-  color:var(--gold-soft);letter-spacing:.2em;
-  text-transform:uppercase;
+.nc-couple-display{
+  font-family:var(--display);font-style:italic;font-weight:400;
+  font-size:clamp(40px,7.5vw,80px);
+  color:#F8F5EC;line-height:.95;
+  letter-spacing:-.02em;
+  text-shadow:0 3px 24px rgba(0,0,0,.30);
 }
-.nc-date{
-  margin-top:28px;
-  font-family:var(--sans);font-weight:600;
-  font-size:12px;letter-spacing:.6em;text-transform:uppercase;
-  color:rgba(248,245,236,.7);padding-left:.6em;
-  display:flex;align-items:center;gap:16px;
+.nc-couple-display .nc-amp{
+  font-family:var(--script);font-style:normal;
+  color:var(--gold-soft);font-size:.65em;
+  display:inline-block;margin:0 .12em;vertical-align:middle;
 }
-.nc-date::before{
-  content:'';width:32px;height:1px;
-  background:var(--gold-soft);opacity:.55;flex-shrink:0;
-}
-@media(max-width:600px){
-  .nc-content{padding:48px 24px 56px;}
+@media(max-width:520px){
+  .nc-inner{padding:0 4px;}
 }
 
 /* Bloque editorial de invitación (sin versículo) */
@@ -1524,44 +1504,36 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     </div>
   </section>
 
-  <!-- DIVIDER: date-hero dark → bg -->
-  <div class="seam" style="--from:#26406A;--to:var(--bg)" aria-hidden="true"></div>
+  <!-- DIVIDER: date-hero → navy invitation (misma familia oscura, transición casi imperceptible) -->
+  <div class="seam" style="--from:#26406A;--to:var(--accent-deep)" aria-hidden="true"></div>
 
-  <!-- NOS CASAMOS (sección fotográfica, de boda-griselda-jorge) -->
-  <section id="nos-casamos">
-    <img class="nc-bg" src="foto3.jpg" alt="" loading="lazy">
-    <div class="nc-content">
-      <p class="nc-eyebrow">28 · 06 · 2026 · Marina del Rey</p>
-      <p class="nc-headline">¡Nos<br>casamos!</p>
-      <div class="nc-rule" aria-hidden="true"></div>
-      <p class="nc-invite">Con la bendición de Dios y el amor de nuestras familias, queremos compartir contigo el inicio de nuestra historia juntos.</p>
-      <p class="nc-couple-line">Enma &amp; Uziel</p>
-      <p class="nc-date">Domingo · 28 de junio de 2026</p>
+  <!-- SECCIÓN UNIFICADA: "¡Nos casamos!" + Invitación formal -->
+  <section id="nos-casamos" aria-label="Invitación">
+    <div class="nc-inner">
+      <span class="nc-headline">¡Nos casamos!</span>
+      <!-- Separador ornamental — diamante + hairlines -->
+      <svg class="nc-diamond" viewBox="0 0 240 24" fill="none" aria-hidden="true">
+        <g stroke="rgba(232,204,149,.55)" stroke-width=".8" fill="none">
+          <path d="M4 12 L100 12" stroke-linecap="round"/>
+          <path d="M140 12 L236 12" stroke-linecap="round"/>
+          <rect x="110" y="6" width="20" height="12" rx="1"
+                transform="rotate(45 120 12)"
+                stroke="rgba(232,204,149,.75)" fill="rgba(232,204,149,.12)"/>
+          <circle cx="120" cy="12" r="2.5" fill="rgba(232,204,149,.55)" stroke="none"/>
+        </g>
+      </svg>
+      <p class="nc-invite-body">Con la bendición de Dios y el amor de nuestras familias,<br>nos complace invitarles a nuestro enlace matrimonial</p>
+      <p class="nc-couple-display">Enma <span class="nc-amp">&amp;</span> Uziel</p>
     </div>
   </section>
 
-  <!-- DIVIDER: bg → paper -->
-  <div class="seam" style="--from:var(--bg);--to:var(--paper)" aria-hidden="true"></div>
+  <!-- DIVIDER: navy → paper cream (transición de lujo) -->
+  <div class="seam" style="--from:var(--accent-deep);--to:var(--paper)" aria-hidden="true"></div>
 
   <!-- PADRES Y PADRINOS -->
   <section class="section-paper family">
     <span class="mono-wm" aria-hidden="true">U &amp; E</span>
     <div class="container">
-
-      <!-- Bloque editorial de invitación -->
-      <div class="fam-intro">
-        <svg class="fam-intro-orn" viewBox="0 0 220 14" fill="none" aria-hidden="true">
-          <g stroke="var(--gold)" stroke-width=".9" opacity=".7" fill="none">
-            <path d="M4 7 L92 7" stroke-linecap="round"/>
-            <path d="M128 7 L216 7" stroke-linecap="round"/>
-            <circle cx="110" cy="7" r="3"/>
-            <circle cx="110" cy="7" r="1" fill="var(--gold)" stroke="none"/>
-          </g>
-        </svg>
-        <div class="fam-intro-rule" aria-hidden="true"></div>
-        <p class="fam-invite">Nos complace invitarles a nuestro enlace matrimonial</p>
-        <p class="fam-couple">Enma <span class="fam-couple-amp">&amp;</span> Uziel</p>
-      </div>
 
       <div style="text-align:center">
         <div class="eyebrow">Con la bendición de</div>
@@ -2176,12 +2148,23 @@ tick();setInterval(tick,1000);
   });
 })();
 
-// ------ NOS CASAMOS ------
-gsap.fromTo('.nc-eyebrow',{opacity:0,y:16},{opacity:1,y:0,duration:.9,scrollTrigger:{trigger:'#nos-casamos',start:'top 75%'}});
-gsap.fromTo('.nc-headline',{opacity:0,y:36,skewX:'-4deg'},{opacity:1,y:0,skewX:'0deg',duration:1.2,ease:'power3.out',scrollTrigger:{trigger:'#nos-casamos',start:'top 70%'}});
-gsap.fromTo('.nc-rule',{scaleX:0,transformOrigin:'left'},{scaleX:1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'#nos-casamos',start:'top 68%'}});
-gsap.fromTo('.nc-invite,.nc-couple-line,.nc-date',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.14,ease:'power3.out',scrollTrigger:{trigger:'#nos-casamos',start:'top 65%'}});
-gsap.fromTo('.fam-intro > *',{opacity:0,y:16},{opacity:1,y:0,duration:.9,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.fam-intro',start:'top 82%'}});
+// ------ SECCIÓN NOS CASAMOS (unificada) ------
+gsap.fromTo('.nc-headline',
+  {opacity:0,y:50,filter:'blur(4px)'},
+  {opacity:1,y:0,filter:'blur(0px)',duration:1.4,ease:'power3.out',
+   scrollTrigger:{trigger:'#nos-casamos',start:'top 78%',once:true}});
+gsap.fromTo('.nc-diamond',
+  {opacity:0,scaleX:.3},
+  {opacity:1,scaleX:1,duration:1,ease:'power3.out',
+   scrollTrigger:{trigger:'#nos-casamos',start:'top 72%',once:true}});
+gsap.fromTo('.nc-invite-body',
+  {opacity:0,y:24},
+  {opacity:1,y:0,duration:1.1,ease:'power3.out',
+   scrollTrigger:{trigger:'#nos-casamos',start:'top 68%',once:true}});
+gsap.fromTo('.nc-couple-display',
+  {opacity:0,y:30,scale:.95},
+  {opacity:1,y:0,scale:1,duration:1.2,ease:'back.out(1.2)',
+   scrollTrigger:{trigger:'#nos-casamos',start:'top 65%',once:true}});
 gsap.fromTo('.fam-card',{opacity:0,y:28},{opacity:1,y:0,duration:.95,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.family-grid',start:'top 82%'}});
 
 // ------ NOTA GIFTS ------
