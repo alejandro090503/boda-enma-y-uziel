@@ -799,6 +799,26 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .gifts .gifts-head{text-align:center;max-width:740px;margin:0 auto 80px}
 .gifts h2{font-size:clamp(38px,5.5vw,60px);margin-bottom:20px}
 .gifts-sub{font-family:var(--display);font-style:italic;font-size:clamp(18px,2vw,22px);color:var(--ink-soft);margin-top:20px;font-weight:400}
+.gifts-nota{
+  display:flex;align-items:flex-start;gap:14px;
+  max-width:560px;margin:32px auto 0;
+  padding:22px 26px;
+  background:linear-gradient(135deg,rgba(26,46,74,.055) 0%,rgba(201,166,100,.06) 100%);
+  border:1px solid rgba(201,166,100,.38);
+  border-left:3px solid var(--gold);
+  border-radius:2px;text-align:left;
+}
+.gifts-nota svg{color:var(--gold-deep);flex-shrink:0;margin-top:2px}
+.gifts-nota-title{
+  display:block;
+  font-family:var(--sans);font-weight:700;font-size:11px;
+  letter-spacing:.45em;text-transform:uppercase;
+  color:var(--gold-deep);padding-left:.45em;margin-bottom:8px;
+}
+.gifts-nota-text{
+  font-family:var(--serif);font-size:15px;font-weight:500;
+  color:var(--ink);line-height:1.7;
+}
 .gifts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;max-width:1100px;margin:0 auto;perspective:1500px}
 .gift-card{
   background:var(--paper);padding:48px 36px;
@@ -1002,6 +1022,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 /* ============ CELEBRACIÓN UNIFICADA (Ceremonia + Itinerario) ============ */
 .celebracion{padding:min(18vh,170px) 0;contain:none;overflow:visible}
 .celebracion .locs-sub{margin-bottom:64px}
+.cer-sub-verse{
+  font-family:var(--script);font-weight:400;
+  font-size:clamp(26px,3.4vw,36px);
+  color:var(--gold-deep);line-height:1.2;
+  margin:16px auto 52px;letter-spacing:.01em;
+  opacity:.9;
+}
 .cer-block{max-width:560px;margin:0 auto 56px;position:relative}
 .cer-eyebrow{
   font-family:var(--sans);font-weight:500;
@@ -1571,6 +1598,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       <div style="text-align:center">
         <div class="eyebrow">Acompáñanos</div>
         <h2>Ceremonia <em>Religiosa</em></h2>
+        <p class="cer-sub-verse">Unimos nuestras vidas ante Dios</p>
       </div>
 
       <!-- BLOQUE 1 · CEREMONIA RELIGIOSA -->
@@ -1671,7 +1699,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             <div class="itin-card">
               <div class="itin-time">8:00 pm</div>
               <div class="itin-name">Fin del evento</div>
-              <div class="itin-desc">Cerramos esta noche con el corazón lleno.</div>
+              <div class="itin-desc">Cerramos esta noche con el corazón lleno de amor y mucho agradecimiento a Dios y a ustedes.</div>
             </div>
           </li>
         </ul>
@@ -1679,47 +1707,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     </div>
   </section>
 
-  <!-- DIVIDER: paper → bg -->
-  <div class="seam" style="--from:var(--paper);--to:var(--bg)" aria-hidden="true"></div>
-
-  <!-- DRESS CODE -->
-  <section class="section-bg dress">
-    <div class="container">
-      <div class="eyebrow">Código de vestimenta</div>
-      <h2>Formal</h2>
-      <div class="dc-cols">
-        <!-- Damas (primero) -->
-        <div class="dc-col">
-          <svg class="dc-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <path d="M15 11 Q22 15.5 29 11 Q28.2 18 26 22 Q32.5 32 34 41 Q22 37.5 10 41 Q11.5 32 18 22 Q15.8 18 15 11 Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round" fill="currentColor" fill-opacity=".07"/>
-            <path d="M18 22 Q22 24.5 26 22" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
-            <path d="M22 24.5 Q21 33 22 40.2" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity=".5"/>
-          </svg>
-          <div class="dc-col-label">Damas</div>
-          <div class="dc-col-note">Vestido largo</div>
-          <div class="dc-col-warn">Evitar colores beige o blanco</div>
-        </div>
-        <!-- Divisor -->
-        <div class="dc-divider" aria-hidden="true"></div>
-        <!-- Caballeros (después) -->
-        <div class="dc-col">
-          <svg class="dc-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <path d="M13 13 Q22 10 31 13 L33 41 L11 41 Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round" fill="currentColor" fill-opacity=".06"/>
-            <path d="M22 11 L16.5 18 L21 31" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
-            <path d="M22 11 L27.5 18 L23 31" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
-            <path d="M19.4 13.2 L22 15 L24.6 13.2 L24.6 16.8 L22 15 L19.4 16.8 Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round" fill="currentColor" fill-opacity=".2"/>
-            <circle cx="22" cy="33.5" r="1" fill="currentColor"/>
-            <circle cx="22" cy="37.5" r="1" fill="currentColor"/>
-          </svg>
-          <div class="dc-col-label">Caballeros</div>
-          <div class="dc-col-note">Traje o tuxedo</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DIVIDER: bg → surface -->
-  <div class="seam" style="--from:var(--bg);--to:var(--surface)" aria-hidden="true"></div>
+  <!-- DIVIDER: paper → surface -->
+  <div class="seam" style="--from:var(--paper);--to:var(--surface)" aria-hidden="true"></div>
 
   <!-- GALLERY â€" RUEDA DE LA FORTUNA -->
   <section class="section-surface gallery">
@@ -1752,7 +1741,18 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       <div class="gifts-head">
         <div class="eyebrow">Tu presencia es nuestro regalo</div>
         <h2>Mesa <em>de</em> regalos</h2>
-        <p class="gifts-sub">El destino nos unió y tu cariño nos acompaña. Si deseas bendecir nuestro inicio con un obsequio, te compartimos nuestra mesa de regalos:</p>
+        <p class="gifts-sub">Dios nos unió y tu cariño nos acompaña. Si deseas bendecir nuestro inicio con un obsequio, te compartimos nuestra mesa de regalos:</p>
+        <div class="gifts-nota">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <circle cx="12" cy="16" r=".5" fill="currentColor"/>
+          </svg>
+          <div>
+            <span class="gifts-nota-title">Nota cariñosa</span>
+            <p class="gifts-nota-text">En el barco no se permiten globos ni regalos grandes. El día del evento habrá una mesa con sobres y un buzón donde podrás depositar tu regalo con todo cariño.</p>
+          </div>
+        </div>
       </div>
       <div class="gifts-grid gifts-grid--single">
         <article class="gift-card">
@@ -2184,10 +2184,8 @@ gsap.fromTo('.nc-invite,.nc-couple-line,.nc-date',{opacity:0,y:18},{opacity:1,y:
 gsap.fromTo('.fam-intro > *',{opacity:0,y:16},{opacity:1,y:0,duration:.9,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.fam-intro',start:'top 82%'}});
 gsap.fromTo('.fam-card',{opacity:0,y:28},{opacity:1,y:0,duration:.95,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.family-grid',start:'top 82%'}});
 
-// ------ DRESS ------
-gsap.fromTo('.dress .eyebrow, .dress h2, .dress-sub',{opacity:0,y:14},{opacity:1,y:0,duration:.9,stagger:.08,scrollTrigger:{trigger:'.dress',start:'top 78%'}});
-gsap.fromTo('.dc-col',{opacity:0,y:24},{opacity:1,y:0,duration:.95,stagger:.18,ease:'power3.out',scrollTrigger:{trigger:'.dc-cols',start:'top 82%'}});
-gsap.fromTo('.swatch',{opacity:0,scale:.35,y:24},{opacity:1,scale:1,y:0,duration:1.1,stagger:.09,ease:'elastic.out(1,.6)',scrollTrigger:{trigger:'.dc-cols',start:'top 78%'}});
+// ------ NOTA GIFTS ------
+gsap.fromTo('.gifts-nota',{opacity:0,x:-18},{opacity:1,x:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.gifts-nota',start:'top 88%'}});
 
 // ------ GALERÍA — RUEDA 3D (arrastre + inercia) ------
 gsap.fromTo('.gallery-head > *',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.1,scrollTrigger:{trigger:'.gallery-head',start:'top 80%'}});
