@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Enma & Uziel · 28 Junio 2026 · Marina del Rey, California</title>
+<title>Enma & Uziel · June 28, 2026 · Marina del Rey, California</title>
 <meta name="description" content="Enma & Uziel · Nuestra boda · Domingo 28 de junio de 2026 · Marina del Rey, California">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://boda-enma-y-uziel.vercel.app">
-<meta property="og:title" content="Enma & Uziel · 28 · 06 · 2026">
-<meta property="og:description" content="Nos casamos el domingo 28 de junio de 2026 en Marina del Rey, California — Abre tu invitación">
+<meta property="og:title" content="Enma & Uziel · June 28, 2026">
+<meta property="og:description" content="We're getting married on Sunday, June 28, 2026 in Marina del Rey, California — Open your invitation">
 <meta property="og:image" content="https://boda-enma-y-uziel.vercel.app/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_MX">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Enma & Uziel · 28 · 06 · 2026">
-<meta name="twitter:description" content="Nos casamos el domingo 28 de junio de 2026 en Marina del Rey, California — Abre tu invitación">
+<meta name="twitter:title" content="Enma & Uziel · June 28, 2026">
+<meta name="twitter:description" content="We're getting married on Sunday, June 28, 2026 in Marina del Rey, California — Open your invitation">
 <meta name="twitter:image" content="https://boda-enma-y-uziel.vercel.app/og-image.jpg">
 <link rel="preload" as="image" href="portada.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -940,6 +940,93 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 #rsvp-feedback{font-family:var(--serif);font-style:italic;font-size:16px;font-weight:500;text-align:center;margin:16px auto 0;max-width:420px;display:none}
 .rsvp-deadline{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-family:var(--sans);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);padding-left:.34em;font-weight:600}
 
+/* ============ SCROLL ARROW (persistent) ============ */
+.scroll-arrow{
+  position:fixed;bottom:28px;left:50%;z-index:40;
+  transform:translateX(-50%);pointer-events:none;
+  opacity:0;transition:opacity .5s ease;
+}
+.scroll-arrow.is-visible{opacity:1}
+.scroll-arrow-inner{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  animation:scrollArrowBounce 2s ease-in-out infinite;
+}
+.scroll-arrow-label{
+  font-family:var(--sans);font-size:9px;font-weight:600;
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold-deep);padding-left:.4em;
+  background:rgba(245,239,227,.88);
+  padding:5px 16px 5px calc(16px + .4em);
+  border-radius:20px;
+  border:1px solid rgba(201,166,100,.35);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  box-shadow:0 4px 16px rgba(26,46,74,.12);
+}
+.scroll-arrow-chevron{
+  width:22px;height:22px;color:var(--gold);
+  filter:drop-shadow(0 2px 6px rgba(26,46,74,.18));
+}
+@keyframes scrollArrowBounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(6px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .scroll-arrow-inner{animation:none}
+}
+
+/* ============ PARKING SECTION ============ */
+.parking{text-align:center;contain:none;overflow:visible}
+.parking-inner{max-width:680px;margin:0 auto}
+.parking-map{
+  display:block;width:100%;max-width:520px;margin:0 auto 48px;
+  border-radius:12px;
+  border:1px solid rgba(201,166,100,.32);
+  box-shadow:0 12px 40px rgba(26,46,74,.16),0 2px 8px rgba(26,46,74,.08);
+  overflow:hidden;
+}
+.parking-map img{width:100%;height:auto;display:block}
+.parking-details{
+  max-width:520px;margin:0 auto;text-align:left;
+}
+.parking-block{
+  margin-bottom:36px;
+  padding:24px 28px;
+  background:var(--paper);
+  border:1px solid rgba(201,166,100,.28);
+  border-left:3px solid var(--gold);
+  border-radius:2px;
+}
+.parking-block-title{
+  font-family:var(--sans);font-weight:700;font-size:11px;
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold-deep);padding-left:.4em;margin-bottom:14px;
+}
+.parking-block-text{
+  font-family:var(--serif);font-size:16px;font-weight:500;
+  color:var(--ink);line-height:1.75;
+}
+.parking-block-text li{margin-bottom:6px;padding-left:4px}
+.parking-block-text ul{list-style:none;padding:0;margin:0}
+.parking-block-text ul li::before{
+  content:'→ ';color:var(--gold);font-weight:600;
+}
+.parking-fees{
+  display:grid;grid-template-columns:auto 1fr;gap:8px 20px;
+  margin-top:10px;
+}
+.parking-fees dt{
+  font-family:var(--sans);font-size:13px;font-weight:600;
+  color:var(--ink);letter-spacing:.02em;
+}
+.parking-fees dd{
+  font-family:var(--sans);font-size:13px;font-weight:500;
+  color:var(--gold-deep);margin:0;
+}
+.parking-note{
+  font-family:var(--serif);font-style:italic;font-size:13px;
+  color:var(--ink-soft);margin-top:20px;line-height:1.6;
+}
+
 /* ============ FOOTER ============ */
 footer{
   background:linear-gradient(180deg, var(--accent-deep) 0%, #0A1424 100%);
@@ -1394,6 +1481,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 </div>
 <div id="env-flash" aria-hidden="true"></div>
 
+<!-- SCROLL ARROW (persistente — se oculta al llegar al final) -->
+<div class="scroll-arrow" id="scroll-arrow" aria-hidden="true">
+  <div class="scroll-arrow-inner">
+    <span class="scroll-arrow-label">Scroll</span>
+    <svg class="scroll-arrow-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 9 L12 15 L18 9"/>
+    </svg>
+  </div>
+</div>
+
 <!-- MUSIC -->
 <audio id="music" preload="metadata" loop>
   <source src="cancion.mp3" type="audio/mpeg">
@@ -1461,7 +1558,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         <span class="hero-name-l" data-split="Uziel"></span>
       </h1>
       <div class="hero-date" data-anim="hero-date">
-        <span>28</span><span class="sep">·</span><span>Junio</span><span class="sep">·</span><span>2026</span>
+        <span>June</span><span class="sep">·</span><span>28</span><span class="sep">·</span><span>2026</span>
       </div>
       <div class="hero-place" data-anim="hero-place">Marina del Rey · California</div>
     </div>
@@ -1704,8 +1801,51 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <p class="gal-hint">Arrastra para girar</p>
   </section>
 
-  <!-- DIVIDER: surface → surface -->
-  <div class="seam" style="--from:var(--surface);--to:var(--surface)" aria-hidden="true"></div>
+  <!-- DIVIDER: surface → bg -->
+  <div class="seam" style="--from:var(--surface);--to:var(--bg)" aria-hidden="true"></div>
+
+  <!-- PARKING & DIRECTIONS -->
+  <section class="section-bg parking">
+    <div class="container parking-inner">
+      <div class="eyebrow">Información importante</div>
+      <h2>Estacionamiento <em>&amp;</em> Cómo llegar</h2>
+
+      <div class="parking-map">
+        <img src="parking.jpg" alt="Mapa de estacionamiento — City Cruises Marina del Rey, Fisherman's Village" loading="lazy">
+      </div>
+
+      <div class="parking-details">
+        <div class="parking-block">
+          <div class="parking-block-title">Cómo llegar desde la 405</div>
+          <div class="parking-block-text">
+            <ul>
+              <li>Toma la Marina Freeway 90 hacia el oeste</li>
+              <li>Gira a la izquierda en Mindanao Way</li>
+              <li>Gira a la izquierda en Admiralty Way</li>
+              <li>Gira a la derecha en Fiji Way</li>
+              <li>Estaciona en el lote marcado <b>Fisherman's Village</b></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="parking-block">
+          <div class="parking-block-title">Tarifas de estacionamiento</div>
+          <div class="parking-block-text">
+            <p style="margin-bottom:12px">El estacionamiento de Fisherman's Village es público y con costo. Deberás pagar en las estaciones del lote y colocar el recibo en tu tablero.</p>
+            <dl class="parking-fees">
+              <dt>0 – 2 horas</dt><dd>$2</dd>
+              <dt>2 – 4 horas</dt><dd>$4</dd>
+              <dt>4+ horas / todo el día</dt><dd>$8</dd>
+            </dl>
+            <p class="parking-note">Las estaciones de pago aceptan tarjeta y efectivo. City Cruises no opera el estacionamiento; las tarifas pueden cambiar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER: bg → surface -->
+  <div class="seam" style="--from:var(--bg);--to:var(--surface)" aria-hidden="true"></div>
 
   <!-- GIFTS -->
   <section class="section-surface gifts">
@@ -1885,7 +2025,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         </g>
       </svg>
       <div class="footer-names">Enma <span class="amp">&amp;</span> Uziel</div>
-      <div class="footer-date">28 · 06 · 2026 · Marina del Rey, California</div>
+      <div class="footer-date">06 · 28 · 2026 · Marina del Rey, California</div>
       <div class="footer-credit">
         <span class="credit-label">Invitación diseñada por</span>
         <a href="https://www.instagram.com/elysium.invitaciones/" target="_blank" rel="noopener" class="credit-handle">
@@ -2551,6 +2691,32 @@ if(musicBtn){
 }
 // Música arranca automáticamente en launchInvitation() (al abrir el sobre)
 // El botón de play/pausa sigue disponible en cualquier momento
+
+// ------ SCROLL ARROW (persistente, se oculta cerca del footer) ------
+(function(){
+  var arrow = document.getElementById('scroll-arrow');
+  if(!arrow) return;
+  // Mostrar tras revelar la invitación (el sobre se oculta)
+  var showCheck = setInterval(function(){
+    var wrap = document.querySelector('.wrap');
+    if(wrap && getComputedStyle(wrap).visibility === 'visible'){
+      clearInterval(showCheck);
+      arrow.classList.add('is-visible');
+    }
+  }, 500);
+  // Ocultar cuando se llega al 85% del scroll (cerca del footer)
+  window.addEventListener('scroll', function(){
+    var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if(maxScroll <= 0) return;
+    var pct = window.scrollY / maxScroll;
+    arrow.classList.toggle('is-visible', pct < 0.85);
+  }, {passive:true});
+})();
+
+// ------ PARKING animations ------
+gsap.fromTo('.parking .eyebrow, .parking h2',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.1,scrollTrigger:{trigger:'.parking',start:'top 80%'}});
+gsap.fromTo('.parking-map',{opacity:0,y:30,scale:.96},{opacity:1,y:0,scale:1,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:'.parking-map',start:'top 84%'}});
+gsap.fromTo('.parking-block',{opacity:0,x:-18},{opacity:1,x:0,duration:.9,stagger:.15,ease:'power3.out',scrollTrigger:{trigger:'.parking-details',start:'top 86%'}});
 </script>
 </body>
 </html>
