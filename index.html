@@ -484,9 +484,9 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 }
 .nc-invite-body{
   font-family:var(--serif);font-style:italic;font-weight:500;
-  font-size:clamp(20px,2.6vw,26px);
-  color:rgba(248,245,236,.95);
-  line-height:1.7;max-width:560px;margin:0 auto 44px;
+  font-size:clamp(24px,3.2vw,32px);
+  color:rgba(248,245,236,.97);
+  line-height:1.6;max-width:600px;margin:0 auto 44px;
   letter-spacing:.005em;
 }
 .nc-couple-display{
@@ -1804,7 +1804,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             <div class="itin-card">
               <div class="itin-time">5:15 pm</div>
               <div class="itin-name">Ceremonia</div>
-              <div class="itin-desc">Unimos nuestras vidas frente al mar.</div>
+              <div class="itin-desc">Unimos nuestras vidas frente a Dios.</div>
             </div>
           </li>
           <li class="itin-event">
@@ -2484,6 +2484,7 @@ gsap.fromTo('.env-wrap',{opacity:0,y:30},{opacity:1,y:0,duration:1,ease:'power3.
   var urlPases  = (isNaN(rawP) || rawP < 1 || rawP > 20) ? 1 : rawP;
 
   var rsvpChoice  = null;
+  var savedNames  = [];
   var pasesNumEl  = document.getElementById('rsvp-pases-num');
   var fieldsEl    = document.getElementById('rsvp-fields');
   var btnYes      = document.getElementById('btnYes');
@@ -2504,6 +2505,8 @@ gsap.fromTo('.env-wrap',{opacity:0,y:30},{opacity:1,y:0,duration:1,ease:'power3.
       var inp=document.createElement('input');
       inp.className='rsvp-input'; inp.type='text';
       inp.placeholder='Invitado '+(i+1); inp.autocomplete='off';
+      inp.value=savedNames[i]||'';
+      (function(idx){ inp.addEventListener('input', function(){ savedNames[idx]=this.value; }); })(i);
       fieldsEl.appendChild(inp);
     }
   }
@@ -2523,14 +2526,12 @@ gsap.fromTo('.env-wrap',{opacity:0,y:30},{opacity:1,y:0,duration:1,ease:'power3.
       .then(function(d){
         if(!d.ok || !d.invitado) return;
         var inv=d.invitado;
+        if(inv.nombres_confirmados && inv.nombres_confirmados.length){
+          savedNames = inv.nombres_confirmados.slice();
+        }
         if(inv.estado==='confirmado'){
           selectRsvp('yes');
           if(btnText) btnText.textContent='Actualizar respuesta';
-          var prev=inv.nombres_confirmados||[];
-          if(prev.length>0 && fieldsEl){
-            var inputs=fieldsEl.querySelectorAll('input');
-            prev.forEach(function(n,i){ if(inputs[i]) inputs[i].value=n; });
-          }
         } else if(inv.estado==='declino'){
           selectRsvp('no');
           if(btnText) btnText.textContent='Actualizar respuesta';
