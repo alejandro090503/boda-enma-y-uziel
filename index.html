@@ -981,13 +981,31 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .parking{text-align:center;contain:none;overflow:visible}
 .parking-inner{max-width:680px;margin:0 auto}
 .parking-map{
-  display:block;width:100%;max-width:520px;margin:0 auto 48px;
+  display:block;width:100%;max-width:460px;margin:0 auto 48px;
   border-radius:12px;
   border:1px solid rgba(201,166,100,.32);
   box-shadow:0 12px 40px rgba(26,46,74,.16),0 2px 8px rgba(26,46,74,.08);
-  overflow:hidden;
+  overflow:hidden;cursor:zoom-in;
+  transition:transform .3s ease,box-shadow .3s ease;
 }
+.parking-map:hover{transform:scale(1.02);box-shadow:0 16px 48px rgba(26,46,74,.22)}
 .parking-map img{width:100%;height:auto;display:block}
+/* Lightbox para expandir el croquis */
+#parking-lightbox{
+  position:fixed;inset:0;z-index:9990;display:none;
+  align-items:center;justify-content:center;
+  background:rgba(10,15,38,.85);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  cursor:zoom-out;opacity:0;padding:clamp(16px,4vw,48px);
+}
+#parking-lightbox.is-open{display:flex}
+#parking-lightbox img{
+  max-width:min(92vw,800px);max-height:min(85vh,700px);
+  width:auto;height:auto;object-fit:contain;
+  border-radius:14px;
+  box-shadow:0 28px 90px rgba(0,0,0,.6),0 0 0 1px rgba(201,166,100,.3);
+  opacity:0;transform:scale(.88);
+}
 .parking-details{
   max-width:520px;margin:0 auto;text-align:left;
 }
@@ -1090,8 +1108,27 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   .hero-content{padding:40px 20px}
 }
 /* ============ CELEBRACIÓN UNIFICADA (Ceremonia + Itinerario) ============ */
-.celebracion{padding:min(18vh,170px) 0;contain:none;overflow:visible}
+.celebracion{padding:min(18vh,170px) 0;contain:none;overflow:visible;position:relative}
 .celebracion .locs-sub{margin-bottom:64px}
+/* Yate background de la sección ceremonia */
+.celebracion-bg{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 55%;
+  filter:saturate(.75) brightness(.88);
+  z-index:0;
+}
+.celebracion-overlay{
+  position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(180deg,
+      var(--paper) 0%,
+      rgba(245,239,227,.82) 8%,
+      rgba(245,239,227,.65) 30%,
+      rgba(245,239,227,.65) 70%,
+      rgba(245,239,227,.82) 92%,
+      var(--paper) 100%);
+}
+.celebracion > .container{position:relative;z-index:1}
 .cer-sub-verse{
   font-family:var(--script);font-weight:400;
   font-size:clamp(26px,3.4vw,36px);
@@ -1663,6 +1700,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
   <!-- CELEBRACIÓN: CEREMONIA + ITINERARIO (sección unificada) -->
   <section class="section-paper celebracion locs itinerary">
+    <img class="celebracion-bg" src="yate.jpg" alt="" aria-hidden="true" loading="lazy">
+    <div class="celebracion-overlay" aria-hidden="true"></div>
     <span class="mono-wm" aria-hidden="true">U &amp; E</span>
     <div class="container">
 
@@ -1675,9 +1714,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
       <!-- BLOQUE 1 · CEREMONIA RELIGIOSA -->
       <div class="cer-block">
-        <article class="loc-card loc-card--solo loc-card--yate" data-tilt>
-          <img class="loc-card-bg" src="yate.jpg" alt="" aria-hidden="true">
-          <div class="loc-card-overlay" aria-hidden="true"></div>
+        <article class="loc-card loc-card--solo" data-tilt>
           <span class="washi washi--l"></span>
           <svg class="rosette rosette--tl" viewBox="0 0 44 44" fill="none" aria-hidden="true">
             <g stroke="var(--gold)" stroke-width=".8" fill="none">
@@ -1810,42 +1847,56 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <!-- PARKING & DIRECTIONS -->
   <section class="section-bg parking">
     <div class="container parking-inner">
-      <div class="eyebrow">Información importante</div>
+      <div class="eyebrow">Parking &amp; Directions</div>
       <h2>Estacionamiento <em>&amp;</em> Cómo llegar</h2>
 
-      <div class="parking-map">
+      <div class="parking-map" id="parking-map-trigger" role="button" aria-label="Ampliar mapa" tabindex="0">
         <img src="parking-map.jpg" alt="Croquis de ubicación — City Cruises Marina del Rey, Fisherman's Village" loading="lazy">
       </div>
 
       <div class="parking-details">
         <div class="parking-block">
-          <div class="parking-block-title">Cómo llegar desde la 405</div>
+          <div class="parking-block-title">Location</div>
           <div class="parking-block-text">
+            <p>City Cruises Marina del Rey<br>13755 Fiji Way, Marina del Rey CA 90292</p>
+          </div>
+        </div>
+
+        <div class="parking-block">
+          <div class="parking-block-title">Directions</div>
+          <div class="parking-block-text">
+            <p style="margin-bottom:10px;color:var(--gold-deep);font-weight:600;font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase">To approach from the San Diego Freeway (405):</p>
             <ul>
-              <li>Toma la Marina Freeway 90 hacia el oeste</li>
-              <li>Gira a la izquierda en Mindanao Way</li>
-              <li>Gira a la izquierda en Admiralty Way</li>
-              <li>Gira a la derecha en Fiji Way</li>
-              <li>Estaciona en el lote marcado <b>Fisherman's Village</b></li>
+              <li>Take the Marina Freeway 90 going west</li>
+              <li>Turn left onto Mindanao Way</li>
+              <li>Turn left onto Admiralty Way</li>
+              <li>Turn right onto Fiji Way</li>
+              <li>Park in the lot marked <b>Fisherman's Village</b></li>
             </ul>
           </div>
         </div>
 
         <div class="parking-block">
-          <div class="parking-block-title">Tarifas de estacionamiento</div>
+          <div class="parking-block-title">Parking</div>
           <div class="parking-block-text">
-            <p style="margin-bottom:12px">El estacionamiento de Fisherman's Village es público y con costo. Deberás pagar en las estaciones del lote y colocar el recibo en tu tablero.</p>
+            <p style="margin-bottom:12px">The Fisherman's Village lot is a city mandated parking facility. You will need to pay for parking and obtain a ticket to put on your vehicle's dashboard. The pay stations (located throughout the parking facility) take credit card or cash.</p>
+            <p style="margin-bottom:10px;color:var(--gold-deep);font-weight:600;font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase">Parking fees are as follows:</p>
             <dl class="parking-fees">
-              <dt>0 – 2 horas</dt><dd>$2</dd>
-              <dt>2 – 4 horas</dt><dd>$4</dd>
-              <dt>4+ horas / todo el día</dt><dd>$8</dd>
+              <dt>0 – 2 hours</dt><dd>$2</dd>
+              <dt>2 – 4 hours</dt><dd>$4</dd>
+              <dt>4 hours – all day</dt><dd>$8</dd>
             </dl>
-            <p class="parking-note">Las estaciones de pago aceptan tarjeta y efectivo. City Cruises no opera el estacionamiento; las tarifas pueden cambiar.</p>
+            <p class="parking-note">*City Cruises does not own or operate any of the parking facilities and rates are subject to change.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Lightbox para el croquis de parking -->
+  <div id="parking-lightbox" aria-hidden="true">
+    <img src="parking-map.jpg" alt="Croquis ampliado">
+  </div>
 
   <!-- DIVIDER: bg → surface -->
   <div class="seam" style="--from:var(--bg);--to:var(--surface)" aria-hidden="true"></div>
@@ -2720,6 +2771,29 @@ if(musicBtn){
 gsap.fromTo('.parking .eyebrow, .parking h2',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.1,scrollTrigger:{trigger:'.parking',start:'top 80%'}});
 gsap.fromTo('.parking-map',{opacity:0,y:30,scale:.96},{opacity:1,y:0,scale:1,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:'.parking-map',start:'top 84%'}});
 gsap.fromTo('.parking-block',{opacity:0,x:-18},{opacity:1,x:0,duration:.9,stagger:.15,ease:'power3.out',scrollTrigger:{trigger:'.parking-details',start:'top 86%'}});
+
+// ------ PARKING LIGHTBOX (expandir croquis al pulsar) ------
+(function(){
+  var trigger = document.getElementById('parking-map-trigger');
+  var lb = document.getElementById('parking-lightbox');
+  if(!trigger || !lb) return;
+  var lbImg = lb.querySelector('img');
+  function open(){
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden','false');
+    gsap.to(lb,{opacity:1,duration:.35,ease:'power2.out'});
+    gsap.to(lbImg,{opacity:1,scale:1,duration:.5,ease:'power3.out',delay:.05});
+  }
+  function close(){
+    gsap.to(lbImg,{opacity:0,scale:.88,duration:.28,ease:'power2.in'});
+    gsap.to(lb,{opacity:0,duration:.3,ease:'power2.in',delay:.05,
+      onComplete:function(){ lb.classList.remove('is-open'); lb.setAttribute('aria-hidden','true'); lbImg.style.opacity='0'; lbImg.style.transform='scale(.88)'; }});
+  }
+  trigger.addEventListener('click',open);
+  trigger.addEventListener('keydown',function(e){ if(e.key==='Enter') open(); });
+  lb.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && lb.classList.contains('is-open')) close(); });
+})();
 </script>
 </body>
 </html>
