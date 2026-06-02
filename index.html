@@ -586,6 +586,19 @@ h1 em,h2 em,h3 em{font-style:italic;font-weight:500;color:var(--accent)}
 .loc-time{font-family:var(--display);font-style:italic;font-size:22px;color:var(--gold);margin-bottom:24px;font-variant-numeric:tabular-nums}
 .loc-addr{font-family:var(--serif);font-size:17px;color:var(--ink);line-height:1.75;margin-bottom:32px;font-weight:500}
 .loc-addr b{font-weight:700;color:var(--accent-deep);letter-spacing:.01em}
+.loc-warning{
+  display:flex;align-items:flex-start;gap:12px;
+  margin:8px 0 28px;padding:18px 20px;
+  background:linear-gradient(135deg,rgba(180,60,40,.06) 0%,rgba(201,166,100,.08) 100%);
+  border:1px solid rgba(180,60,40,.28);
+  border-left:3px solid #B85042;
+  border-radius:2px;text-align:left;
+}
+.loc-warning svg{color:#B85042;flex-shrink:0;margin-top:2px}
+.loc-warning p{
+  font-family:var(--sans);font-size:14px;font-weight:600;
+  color:#8B3A2E;line-height:1.55;margin:0;
+}
 /* Fondo fotográfico sutil en el card de City Cruises */
 .loc-card--yate{
   position:relative;overflow:hidden;background:var(--paper);
@@ -1737,6 +1750,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
             <img src="yate.jpg" alt="Marina Hornblower — City Cruises Marina del Rey" loading="lazy">
           </figure>
           <div class="loc-addr">13755 Fiji Way<br>Marina del Rey, CA 90292<br><b>Embarque 4:30 pm · Ceremonia 5:00 pm</b></div>
+          <div class="loc-warning">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+            <p>Es muy importante estar a tiempo, ya que el barco zarpará puntualmente. Si no llegas a tiempo, no podrás abordar.</p>
+          </div>
           <a class="loc-btn" href="https://maps.app.goo.gl/191dNy9eJMCKpzvP9?g_st=ac" target="_blank" rel="noopener">Ver ubicación</a>
         </article>
       </div>
@@ -1839,6 +1856,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         <div class="wheel-card"><img src="portada.jpg" alt="Enma y Uziel" loading="lazy"></div>
         <div class="wheel-card"><img src="foto6.jpg" alt="Enma y Uziel" loading="lazy"></div>
         <div class="wheel-card"><img src="foto7.jpg" alt="Enma y Uziel" loading="lazy"></div>
+        <div class="wheel-card"><img src="foto8.jpg" alt="Enma y Uziel" loading="lazy"></div>
       </div>
     </div>
     <p class="gal-hint">Arrastra para girar</p>
@@ -2360,7 +2378,7 @@ gsap.fromTo('.gal-hint',{opacity:0},{opacity:.9,duration:1,scrollTrigger:{trigge
   var cards = document.querySelectorAll('.wheel-card');
   var ring  = document.getElementById('wheel-ring');
   if(!ring || cards.length===0) return;
-  var n=cards.length, radius=230;
+  var n=cards.length, radius=260;
   var rot=0, vel=0, isDrag=false, startX=0, startRot=0, lastX=0, rafId=null;
   cards.forEach(function(card,i){ card.style.transform='rotateY('+(360/n*i)+'deg) translateZ('+radius+'px)'; });
   function setRot(r){ rot=r; gsap.set(ring,{rotateY:rot}); }
