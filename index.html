@@ -1713,6 +1713,68 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     </div>
   </section>
 
+  <!-- RSVP -->
+  <section class="section-paper rsvp" id="rsvp">
+    <div class="container">
+      <div class="rsvp-card">
+        <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
+        <svg class="rsvp-corner rsvp-corner--tr" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
+        <svg class="rsvp-corner rsvp-corner--bl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
+        <svg class="rsvp-corner rsvp-corner--br" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
+
+        <div class="rsvp-inner">
+          <svg class="rsvp-ornament" viewBox="0 0 320 56" fill="none" aria-hidden="true">
+            <g stroke="var(--gold)" stroke-width=".9" opacity=".8" fill="none">
+              <path d="M18 28 Q50 10 82 28 Q106 42 130 28"/>
+              <path d="M190 28 Q214 42 238 28 Q270 10 302 28"/>
+              <circle cx="160" cy="28" r="5.5"/>
+              <circle cx="160" cy="28" r="2" fill="var(--gold)" stroke="none"/>
+              <path d="M148 28 L154 28" opacity=".5"/>
+              <path d="M166 28 L172 28" opacity=".5"/>
+              <path d="M154 20 Q160 13 166 20" opacity=".55"/>
+              <path d="M154 36 Q160 43 166 36" opacity=".55"/>
+            </g>
+          </svg>
+
+          <div class="eyebrow">Confirmación de asistencia</div>
+          <h2 class="rsvp-title">Tu presencia <em>lo</em> es todo</h2>
+          <p class="rsvp-text">Eres muy importante para nosotros, hemos reservado lugares en tu honor. Entendemos si no puedes acompañarnos, pero sí requerimos tu confirmación antes de <strong>Junio 14, 2026</strong>.</p>
+
+          <p id="rsvp-name-display" style="display:none;font-family:'Pinyon Script',cursive;font-size:clamp(30px,7vw,44px);color:var(--gold-deep);line-height:1.2;margin:18px auto 4px;"></p>
+
+          <div class="rsvp-divider">
+            <svg class="rsvp-divider-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+          </div>
+
+          <p id="rsvp-pases-note"></p>
+
+          <div class="rsvp-pases-display" id="rsvp-pases-display">
+            <div class="rsvp-pases-label">Número de invitados</div>
+            <div class="rsvp-pases-num" id="rsvp-pases-num">1</div>
+          </div>
+
+          <div class="rsvp-toggle">
+            <button class="rsvp-toggle-btn" id="btnYes" type="button">¡Sí, asistiré!</button>
+            <button class="rsvp-toggle-btn" id="btnNo" type="button">No podré asistir</button>
+          </div>
+
+          <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
+
+          <button class="rsvp-btn" id="rsvp-confirm-btn" type="button">
+            <span id="rsvp-btn-text">Confirmar</span>
+          </button>
+
+          <p id="rsvp-feedback"></p>
+
+          <div class="rsvp-deadline">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+            Fecha límite · Junio 14 - 2026
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CELEBRACIÓN: CEREMONIA + ITINERARIO (sección unificada) -->
   <section class="section-paper celebracion locs itinerary">
     <span class="mono-wm" aria-hidden="true">U &amp; E</span>
@@ -2006,71 +2068,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       </div>
       <br>
       <a class="album-link" href="https://photos.app.goo.gl/enma-uziel-2026" target="_blank" rel="noopener">photos.app.goo.gl/enma-uziel-2026</a>
-    </div>
-  </section>
-
-  <!-- DIVIDER: bg → paper -->
-  <div class="seam" style="--from:var(--bg);--to:var(--paper)" aria-hidden="true"></div>
-
-  <!-- RSVP -->
-  <section class="section-paper rsvp" id="rsvp">
-    <div class="container">
-      <div class="rsvp-card">
-        <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
-        <svg class="rsvp-corner rsvp-corner--tr" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
-        <svg class="rsvp-corner rsvp-corner--bl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
-        <svg class="rsvp-corner rsvp-corner--br" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
-
-        <div class="rsvp-inner">
-          <svg class="rsvp-ornament" viewBox="0 0 320 56" fill="none" aria-hidden="true">
-            <g stroke="var(--gold)" stroke-width=".9" opacity=".8" fill="none">
-              <path d="M18 28 Q50 10 82 28 Q106 42 130 28"/>
-              <path d="M190 28 Q214 42 238 28 Q270 10 302 28"/>
-              <circle cx="160" cy="28" r="5.5"/>
-              <circle cx="160" cy="28" r="2" fill="var(--gold)" stroke="none"/>
-              <path d="M148 28 L154 28" opacity=".5"/>
-              <path d="M166 28 L172 28" opacity=".5"/>
-              <path d="M154 20 Q160 13 166 20" opacity=".55"/>
-              <path d="M154 36 Q160 43 166 36" opacity=".55"/>
-            </g>
-          </svg>
-
-          <div class="eyebrow">Confirmación de asistencia</div>
-          <h2 class="rsvp-title">Tu presencia <em>lo</em> es todo</h2>
-          <p class="rsvp-text">Eres muy importante para nosotros, hemos reservado lugares en tu honor. Entendemos si no puedes acompañarnos, pero sí requerimos tu confirmación antes de <strong>Junio 14, 2026</strong>.</p>
-
-          <p id="rsvp-name-display" style="display:none;font-family:'Pinyon Script',cursive;font-size:clamp(30px,7vw,44px);color:var(--gold-deep);line-height:1.2;margin:18px auto 4px;"></p>
-
-          <div class="rsvp-divider">
-            <svg class="rsvp-divider-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
-          </div>
-
-          <p id="rsvp-pases-note"></p>
-
-          <div class="rsvp-pases-display" id="rsvp-pases-display">
-            <div class="rsvp-pases-label">Número de invitados</div>
-            <div class="rsvp-pases-num" id="rsvp-pases-num">1</div>
-          </div>
-
-          <div class="rsvp-toggle">
-            <button class="rsvp-toggle-btn" id="btnYes" type="button">¡Sí, asistiré!</button>
-            <button class="rsvp-toggle-btn" id="btnNo" type="button">No podré asistir</button>
-          </div>
-
-          <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
-
-          <button class="rsvp-btn" id="rsvp-confirm-btn" type="button">
-            <span id="rsvp-btn-text">Confirmar</span>
-          </button>
-
-          <p id="rsvp-feedback"></p>
-
-          <div class="rsvp-deadline">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
-            Fecha límite · Junio 14 - 2026
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
